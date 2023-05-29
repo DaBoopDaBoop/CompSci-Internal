@@ -42,9 +42,21 @@ error_label.grid(row=8, column=2, columnspan=2)
 
 #Buttons
 #Button 1 (Delete)
-delete_button = tk.Button(root, text='Delete', command=delete_info)
+delete_button = tk.Button(root, text='Delete')
 delete_button.grid(row=6, column=2, padx=5, pady=5)
 
 #Button 2 (Add)
-add_button = tk.Button(root, text='Add', command=submit_info)
+add_button = tk.Button(root, text='Add')
 add_button.grid(row=6, column=3, padx=5, pady=5)
+
+tree = ttk.Treeview(root, show="headings")
+tree["columns"] = ("Customer Name", "Amount of Items", "Receipt Number", "Item Hired", "Time")
+tree.column("#0", width=0, stretch=tk.NO)
+tree.column("Customer Name", width=100)
+tree.column("Amount of Items", width=200)
+tree.column("Receipt Number", width=150)
+tree.column("Item Hired", width=200)
+tree.column("Time", width=200)
+tree.grid(row=7, column=2, columnspan=3, padx=10, pady=10)
+
+root.mainloop()
