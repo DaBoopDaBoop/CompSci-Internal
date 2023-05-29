@@ -1,5 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
+from datetime import datetime
+
+#Limits
+MAX_NUMBER = 500
+MIN_NUMBER = 1
+
 
 #Windows
 root = tk.Tk()
