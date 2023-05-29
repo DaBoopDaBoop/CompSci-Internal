@@ -39,3 +39,12 @@ label.grid(row=1, column=2, columnspan=4, padx=10, pady=10)
 # Error Label
 error_label = tk.Label(root, text="", fg="red")
 error_label.grid(row=8, column=2, columnspan=2)
+
+#Buttons
+#Button 1 (Delete)
+delete_button = tk.Button(root, text='Delete', command=delete_info)
+delete_button.grid(row=6, column=2, padx=5, pady=5)
+
+#Button 2 (Add)
+add_button = tk.Button(root, text='Add', command=submit_info)
+add_button.grid(row=6, column=3, padx=5, pady=5)
