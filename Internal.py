@@ -30,7 +30,13 @@ def submit_info():
 
         if not item:
             raise ValueError("Please fill in the Quantity of Items hired.")
-        
+        #Validation Check (Numbers Only)
+        if not receipt.isdigit():
+            raise ValueError("Invalid receipt number. Digits only.")
+
+        if not amount.isdigit() or int(amount) < MIN_NUMBER or int(amount) > MAX_NUMBER:
+            raise ValueError(f"Invalid Quantity. Please enter a number between {MIN_NUMBER}-{MAX_NUMBER}.")
+
 # Get current time
         time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
