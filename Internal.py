@@ -16,21 +16,40 @@ def submit_info():
     amount = no_items_entry.get()
     receipt = receipt_no_entry.get()
     item = item_entry.get()
-   
+    try:
+        #IF statements for error messages
+        #Empty Entries
+        if not name:
+            raise ValueError("Please fill in the Customer's Full Name.")
+
+        if not receipt:
+            raise ValueError("Please fill in the Receipt Number.")
+
+        if not amount:
+            raise ValueError("Please fill in the Items Hired.")
+
+        if not item:
+            raise ValueError("Please fill in the Quantity of Items hired.")
+        
 # Get current time
-    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 #Add submission to the list
-    submissions.append((name, amount, receipt, item, time))
+        submissions.append((name, amount, receipt, item, time))
 
 #Clear entry fields
-    name_entry.delete(0, tk.END)
-    no_items_entry.delete(0, tk.END)
-    receipt_no_entry.delete(0, tk.END)
-    item_entry.delete(0, tk.END)
+        name_entry.delete(0, tk.END)
+        no_items_entry.delete(0, tk.END)
+        receipt_no_entry.delete(0, tk.END)
+        item_entry.delete(0, tk.END)
 
 #Update Treeview
-    tree.insert("", tk.END, values=(name, amount, receipt, item, time))
+        tree.insert("", tk.END, values=(name, amount, receipt, item, time))
+
+    except ValueError as e:
+        
+#Display error message
+        error_label.config(text=str(e))
 
 #Delete Function
 def delete_info():
