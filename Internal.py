@@ -23,6 +23,12 @@ def submit_info():
 #Add submission to the list
     submissions.append((name, amount, receipt, item, time))
 
+#Clear entry fields
+    name_entry.delete(0, tk.END)
+    no_items_entry.delete(0, tk.END)
+    receipt_no_entry.delete(0, tk.END)
+    item_entry.delete(0, tk.END)
+
 #Update Treeview
     tree.insert("", tk.END, values=(name, amount, receipt, item, time))
 
