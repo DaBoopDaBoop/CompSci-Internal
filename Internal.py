@@ -11,6 +11,18 @@ MIN_NUMBER = 1
 #List to store submissions
 submissions = []
 
+#Validation Check (Only Letters)
+def validate_name_entry(text):
+    if any(char.isdigit() or (not char.isalnum() and char != " ") for char in text):
+        messagebox.showerror("Error", "Numbers and symbols are not allowed in the Customer's Full Name.")
+        return False
+    return True
+
+def validate_item_entry(text):
+    if any(char.isdigit() or (not char.isalpha() and char != " ") for char in text):
+        messagebox.showerror("Error", "Numbers and symbols are not allowed in the Item Hired.")
+        return False
+    
 def submit_info():
     name = name_entry.get()
     amount = no_items_entry.get()
@@ -92,7 +104,7 @@ receipt_no_label.grid(row=4, column=2)
 receipt_no_entry = tk.Entry(root)
 receipt_no_entry.grid(row=4, column=3)
 
-#Weather Label
+#Item Label
 item_label = tk.Label(root, text="Item Hired:")
 item_label.grid(row=5, column=2)
 item_entry = tk.Entry(root)
@@ -105,6 +117,12 @@ label.grid(row=1, column=2, columnspan=4, padx=10, pady=10)
 # Error Label
 error_label = tk.Label(root, text="", fg="red")
 error_label.grid(row=8, column=2, columnspan=2)
+
+#Validation Checks Link with Entries
+name_entry['validatecommand'] = (name_entry.register(validate_name_entry), '%P')
+name_entry['validate'] = 'key'
+item_entry['validatecommand'] = (name_entry.register(validate_name_entry), '%P')
+item_entry['validate'] = 'key'
 
 #Buttons
 #Button 1 (Delete)
