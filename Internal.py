@@ -32,6 +32,15 @@ def submit_info():
 #Update Treeview
     tree.insert("", tk.END, values=(name, amount, receipt, item, time))
 
+#Delete Function
+def delete_info():
+    selected_item = tree.selection()
+    if not selected_item:
+        messagebox.showerror("Error", "Select the item to be deleted.")
+        return
+    index = int(tree.index(selected_item))
+    del submissions[index]  # Remove submission from the list
+    tree.delete(selected_item)
 
 #Windows
 root = tk.Tk()
@@ -74,7 +83,7 @@ error_label.grid(row=8, column=2, columnspan=2)
 
 #Buttons
 #Button 1 (Delete)
-delete_button = tk.Button(root, text='Delete')
+delete_button = tk.Button(root, text='Delete',command=delete_info)
 delete_button.grid(row=6, column=2, padx=5, pady=5)
 
 #Button 2 (Add)
