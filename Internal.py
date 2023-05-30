@@ -1,10 +1,30 @@
 import tkinter as tk
 from tkinter import ttk
 from datetime import datetime
+from tkinter import messagebox
+
 
 #Limits
 MAX_NUMBER = 500
 MIN_NUMBER = 1
+
+#List to store submissions
+submissions = []
+
+def submit_info():
+    name = name_entry.get()
+    amount = no_items_entry.get()
+    receipt = receipt_no_entry.get()
+    item = item_entry.get()
+   
+# Get current time
+    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+#Add submission to the list
+    submissions.append((name, amount, receipt, item, time))
+
+#Update Treeview
+    tree.insert("", tk.END, values=(name, amount, receipt, item, time))
 
 
 #Windows
@@ -52,7 +72,7 @@ delete_button = tk.Button(root, text='Delete')
 delete_button.grid(row=6, column=2, padx=5, pady=5)
 
 #Button 2 (Add)
-add_button = tk.Button(root, text='Add')
+add_button = tk.Button(root, text='Add',command=submit_info)
 add_button.grid(row=6, column=3, padx=5, pady=5)
 
 tree = ttk.Treeview(root, show="headings")
