@@ -121,7 +121,7 @@ error_label.grid(row=8, column=2, columnspan=2)
 #Validation Checks Link with Entries
 name_entry['validatecommand'] = (name_entry.register(validate_name_entry), '%P')
 name_entry['validate'] = 'key'
-item_entry['validatecommand'] = (name_entry.register(validate_name_entry), '%P')
+item_entry['validatecommand'] = (name_entry.register(validate_item_entry), '%P')
 item_entry['validate'] = 'key'
 
 #Buttons
