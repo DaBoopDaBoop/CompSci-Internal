@@ -37,11 +37,11 @@ def submit_info():
         if not receipt:
             raise ValueError("Please fill in the Receipt Number.")
 
-        if not amount:
+        if not item:
             raise ValueError("Please fill in the Items Hired.")
 
-        if not item:
-            raise ValueError("Please fill in the Quantity of Items hired.")
+        if not amount:
+            raise ValueError("Please fill in the Amount of Items hired.")
         #Validation Check (Numbers Only)
         if not receipt.isdigit():
             raise ValueError("Invalid receipt number. Digits only.")
